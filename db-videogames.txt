@@ -1,0 +1,201 @@
+1. Tables
+..... 1. Software houses table
+..... 2. Games table
+..... 3. Piattaforme table
+..... 4. Categorie table
+..... 5. Pegi table
+..... 6. Tornei table
+..... 7. Players table
+..... 8. Recensioni table
+..... 9. Premi table
+
+2. Pivot tables
+..... 1. game_piattaforma
+..... 2. categoria_game
+..... 3. game_pegi
+..... 4. game_torneo
+..... 5. game_premio
+..... 6. player_torneo
+
+
+
+
+
+1 DB data type
+══════════════
+
+1.1 Tables
+──────────
+
+1.1.1 Software houses table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name        Type         Attributes        Index 
+  ──────────────────────────────────────────────────
+   nome        varchar(50)  not null, unique        
+   piva        varchar(11)  not null                
+   città       varchar(50)  not null                
+   nazione     varchar(50)  not null                
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.2 Games table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name               Type         Attributes                  Index 
+  ───────────────────────────────────────────────────────────────────
+   nome               varchar(50)  not null                          
+   trama              text                                           
+   data di rilascio   datetime     not null                                            
+   software_house_id  bigint       not null, unique, unsigned  FK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.3 Piattaforme table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name  Type         Attributes        Index 
+  ────────────────────────────────────────────
+   nome  varchar(50)  not null, unique        
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.4 Categorie table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name  Type         Attributes        Index 
+  ────────────────────────────────────────────
+   nome  varchar(50)  not null, unique        
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.5 Pegi table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name  Type         Attributes        Index 
+  ────────────────────────────────────────────
+   nome  varchar(50)  not null, unique        
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.6 Tornei table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name  Type         Attributes        Index 
+  ────────────────────────────────────────────
+   nome  varchar(50)  not null, unique        
+   anno  year         not null                
+   città varchar(50)  not null                
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.7 Players table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name      Type         Attributes        Index 
+  ────────────────────────────────────────────────
+   nome      varchar(50)  not null                
+   cognome   varchar(50)  not null                
+   nickname  varchar(50)  not null, unique        
+   città     varchar(50)  not null                
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.8 Recensioni table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name       Type         Attributes                  Index 
+  ───────────────────────────────────────────────────────────
+   titolo     varchar(50)  not null                          
+   testo      text         not null                          
+   rating     tinyint      not null	
+   game_id    bigint       not null, unique, unsigned  FK                            
+   player_id  bigint       not null, unique, unsigned  FK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.1.9 Premi table
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name  Type        Attributes        Index 
+  ───────────────────────────────────────────
+   nome  varcah(50)  not null, unique        
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2 Pivot tables
+────────────────
+
+1.2.1 game_piattaforma
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name          Type    Attributes                  Index 
+  ─────────────────────────────────────────────────────────
+   game_id  bigint  not null, unique, unsigned  PK    
+   piattaforma_id   bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2.2 categoria_game
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name          Type    Attributes                  Index 
+  ─────────────────────────────────────────────────────────
+   categoria_id  bigint  not null, unique, unsigned  PK    
+   game_id       bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2.3 game_pegi
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name          Type    Attributes                  Index 
+  ─────────────────────────────────────────────────────────
+   game_id       bigint  not null, unique, unsigned  PK  
+   pegi_id       bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2.4 game_torneo
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name           Type    Attributes                  Index 
+  ──────────────────────────────────────────────────────────
+   game_id        bigint  not null, unique, unsigned  PK    
+   torneo_id      bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2.5 game_premio
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name          Type    Attributes                  Index 
+  ─────────────────────────────────────────────────────────
+   game_id       bigint  not null, unique, unsigned  PK   
+   premio_id     bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1.2.6 player_torneo
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Name           Type    Attributes                  Index 
+  ──────────────────────────────────────────────────────────
+   player_id      bigint  not null, unique, unsigned  PK    
+   torneo_id      bigint  not null, unique, unsigned  PK    
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
